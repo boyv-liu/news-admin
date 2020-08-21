@@ -6,7 +6,12 @@ function resolve(dir) {
 module.exports = {
   devServer: {
     open: true,
-    port: 3000
+    port: 3000,
+    overlay: {
+      // 关闭遮罩层
+      warnings: false,
+      errors: false
+    }
   },
   // 目录别名
   chainWebpack: config => {
