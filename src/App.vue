@@ -1,6 +1,7 @@
 <template>
-  <div id="app">安保部</div>
+  <div id="app">
+    <router-view></router-view>
+  </div>
 </template>
 
-<style lang="scss">
-</style>
+<style lang="scss"></style>

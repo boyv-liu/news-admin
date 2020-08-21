@@ -1,13 +1,9 @@
 import Vue from 'vue'
-import App from './App.vue'
-import router from './router'
-import axios from 'axios'
+import VueRouter from 'vue-router'
 
-Vue.config.productionTip = false
+import Home from 'pages/Home.vue'
 
-// 挂载axios+设置基地址
-Vue.prototype.$axios = axios
-axios.defaults.baseURL = 'http://localhost:3000'
+Vue.use(VueRouter)
 
 // 解决push, 重复跳转路由报错的问题
 const originalPush = VueRouter.prototype.push
@@ -18,7 +14,8 @@ VueRouter.prototype.push = function push(location, onResolve, onReject) {
   return originalPush.call(this, location).catch(err => err)
 }
 
-new Vue({
-  render: h => h(App),
-  router
-}).$mount('#app')
+const router = new VueRouter({
+  routes: [{ path: '/', component: Home }]
+})
+
+export default router
