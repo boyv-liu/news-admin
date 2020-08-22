@@ -3,6 +3,9 @@ import VueRouter from 'vue-router'
 // 导入路由
 import Home from 'pages/Home.vue'
 import Login from 'pages/Login.vue'
+import PostList from 'pages/PostList.vue'
+import PostPublish from 'pages/PostPublish.vue'
+import MainPage from 'pages/MainPage.vue'
 
 Vue.use(VueRouter)
 
@@ -17,7 +20,15 @@ VueRouter.prototype.push = function push(location, onResolve, onReject) {
 
 const router = new VueRouter({
   routes: [
-    { path: '/', component: Home },
+    {
+      path: '/',
+      component: Home,
+      children: [
+        { path: '/', name: 'mainpage', component: MainPage },
+        { path: '/postlist', name: 'postlist', component: PostList },
+        { path: '/postpublish', name: 'postpublish', component: PostPublish }
+      ]
+    },
     { path: '/login', name: 'login', component: Login }
   ]
 })
